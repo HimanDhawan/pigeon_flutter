@@ -39,31 +39,31 @@ dependencies:
       
 2. Create a new file named pigeon.dart and define model classes to pass data to the native app and receive responses:
     ```sh
-        import 'package:pigeon/pigeon.dart';
-
-        @HostApi()
-        abstract class MyDataApi {
-          @async
-          ResponseData sendData(MyData data);
-        }
-
-        class MyData {
-          String? name;
-          int? age;
-        }
-
-        class ResponseData {
-          String? name;
-        }
+    import 'package:pigeon/pigeon.dart';
+    
+    @HostApi()
+    abstract class MyDataApi {
+      @async
+      ResponseData sendData(MyData data);
+    }
+    
+    class MyData {
+      String? name;
+      int? age;
+    }
+    
+    class ResponseData {
+      String? name;
+    }
     ```
 3. Run the following command to generate necessary files (pigeon.m, pigeon.h, and pigeon.g.dart):
     
     ```sh
-        flutter pub run pigeon \
-        --input lib/pigeon.dart \
-        --dart_out lib/pigeon.g.dart \
-        --objc_header_out ios/Runner/pigeon.h \
-        --objc_source_out ios/Runner/pigeon.m
+    flutter pub run pigeon \
+    --input lib/pigeon.dart \
+    --dart_out lib/pigeon.g.dart \
+    --objc_header_out ios/Runner/pigeon.h \
+    --objc_source_out ios/Runner/pigeon.m
     ```
 
 4. Import pigeon.h and pigeon.m into your Xcode project and add pigeon.h to the Runner-Bridging-Header:
@@ -72,13 +72,13 @@ dependencies:
 5. Create a new class in Xcode, CustomMyDataAPI, to handle the native API calls:
 
     ```sh
-        public class CustomMyDataAPI: NSObject, MyDataApi {
-            public func sendDataData(_ data: MyData, completion: @escaping (ResponseData?, FlutterError?) -> Void) {
-                let responseData = ResponseData.init()
-                responseData.name = data.name! + "from native"
-                completion(responseData,nil)
-            }
+    public class CustomMyDataAPI: NSObject, MyDataApi {
+        public func sendDataData(_ data: MyData, completion: @escaping (ResponseData?, FlutterError?) -> Void) {
+            let responseData = ResponseData.init()
+            responseData.name = data.name! + "from native"
+            completion(responseData,nil)
         }
+    }
     ```
 
 
@@ -87,17 +87,17 @@ dependencies:
 7. Implement a function to invoke the native method:
 
     ```sh
-        Future<void> onClick() async {
-            print("on click called");
-            MyDataApi v = MyDataApi();
-            MyData data = MyData();
-            data.name = "john academy";
-            data.age = 20;
+    Future<void> onClick() async {
+        print("on click called");
+        MyDataApi v = MyDataApi();
+        MyData data = MyData();
+        data.name = "john academy";
+        data.age = 20;
 
-            ResponseData response = await v.sendData(data);
-            setState(() {
-              val = response.name ?? "No value received";
-            });
-        }
+        ResponseData response = await v.sendData(data);
+        setState(() {
+          val = response.name ?? "No value received";
+        });
+    }
     ```
 
