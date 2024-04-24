@@ -30,7 +30,7 @@ The project demonstrate how to use Pigeon in a Flutter project. Follow the steps
 
 ## How to Use Pigeon?
 
-1. Add the Pigeon dependency to your `pubspec.yaml` file:
+1. Add the Pigeon dependency to your pubspec.yaml file:
     ```sh
 dependencies:
   flutter:
