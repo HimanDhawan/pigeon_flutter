@@ -31,13 +31,14 @@ The project demonstrate how to use Pigeon in a Flutter project. Follow the steps
 ## How to Use Pigeon?
 
 1. Add the Pigeon dependency to your pubspec.yaml file:
+ ```sh
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
   pigeon:
+```
       
-2. Create a new file named pigeon.dart and define model classes to pass data to the native app and receive responses:
+3. Create a new file named pigeon.dart and define model classes to pass data to the native app and receive responses:
     ```sh
     import 'package:pigeon/pigeon.dart';
     
@@ -56,7 +57,7 @@ dependencies:
       String? name;
     }
     ```
-3. Run the following command to generate necessary files (pigeon.m, pigeon.h, and pigeon.g.dart):
+4. Run the following command to generate necessary files (pigeon.m, pigeon.h, and pigeon.g.dart):
     
     ```sh
     flutter pub run pigeon \
@@ -66,10 +67,10 @@ dependencies:
     --objc_source_out ios/Runner/pigeon.m
     ```
 
-4. Import pigeon.h and pigeon.m into your Xcode project and add pigeon.h to the Runner-Bridging-Header:
+5. Import pigeon.h and pigeon.m into your Xcode project and add pigeon.h to the Runner-Bridging-Header:
 
 
-5. Create a new class in Xcode, CustomMyDataAPI, to handle the native API calls:
+6. Create a new class in Xcode, CustomMyDataAPI, to handle the native API calls:
 
     ```sh
     public class CustomMyDataAPI: NSObject, MyDataApi {
@@ -82,9 +83,9 @@ dependencies:
     ```
 
 
-6. Import pigeon.g.dart into the Dart file where you want to invoke the native method.
+7. Import pigeon.g.dart into the Dart file where you want to invoke the native method.
 
-7. Implement a function to invoke the native method:
+8. Implement a function to invoke the native method:
 
     ```sh
     Future<void> onClick() async {
