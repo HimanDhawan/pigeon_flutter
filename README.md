@@ -31,13 +31,12 @@ The project demonstrate how to use Pigeon in a Flutter project. Follow the steps
 ## How to Use Pigeon?
 
 1. Add the Pigeon dependency to your pubspec.yaml file:
-    ```sh
 dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
   pigeon:
-      ```
+      
 2. Create a new file named pigeon.dart and define model classes to pass data to the native app and receive responses:
     ```sh
         import 'package:pigeon/pigeon.dart';
